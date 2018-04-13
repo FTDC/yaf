@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>交易记录</title>
+    <link rel="stylesheet" href="/library/bootstraptable/dist/bootstrap-table.min.css">
+</head>
+<body>
+交易记录
+<div id="">
+    <table class="table table-bordered table-striped" id="balanceTable"></table>
+</div>
+
+</body>
+<script type="text/javascript" src="/js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="/library/bootstraptable/dist/bootstrap-table.min.js"></script>
+<script type="application/javascript">
+    // 表单渲染
+    $('#balanceTable').bootstrapTable({
+        columns: [{
+            field: 'trade_no',
+            title: '交易订单号',
+            align: 'center',
+            width: 120
+        }, {
+            field: 'title',
+            title: '消费标题',
+            width: 70,
+            align: 'center'
+        }, {
+            field: 'trade_amount',
+            title: '交易金额',
+            width: 250
+        }],
+        url: '/balance/query',
+        pagination: true,
+        striped: true,
+        pageNumber: 1,
+        pageSize: 15,
+        pageList: [15, 25, 50],
+        method: "post",
+        queryParamsType: "",
+        sidePagination: "server",
+        silent: true  //刷新事件必须设置
+    });
+</script>
+</html>
