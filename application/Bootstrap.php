@@ -27,6 +27,9 @@ class Bootstrap extends Yaf_Bootstrap_Abstract
         // 注册一个插件
         $objSamplePlugin = new SamplePlugin();
         $dispatcher->registerPlugin($objSamplePlugin);
+
+        $autoPlugin = new AutoloadPlugin();
+        $dispatcher->registerPlugin($autoPlugin);
     }
 
 

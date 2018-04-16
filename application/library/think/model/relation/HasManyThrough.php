@@ -11,9 +11,9 @@
 
 namespace think\model\relation;
 
+use think\Db;
 use think\db\Query;
 use think\Exception;
-use think\Db;
 use think\Model;
 use think\model\Relation;
 
