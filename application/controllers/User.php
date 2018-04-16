@@ -32,9 +32,5 @@ class UserController extends Yaf_Controller_Abstract
             $this->redirect("/balance/index");
         }
 
-
-//        var_dump($_POST);
-//        var_dump($post);
-//        exit();
     }
 }

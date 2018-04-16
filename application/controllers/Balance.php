@@ -21,14 +21,18 @@ class BalanceController extends Yaf_Controller_Abstract
     public function indexAction()
     {
 
+        return true;
+    }
+
+
+    public function queryAction()
+    {
+        Yaf_Dispatcher::getInstance()->disableView();
+
         $balanceModel = new BalanceModel();
 
         $result = $balanceModel->queryBalanceList();
 
         $this->getResponse()->setBody(json_encode($result));
-
-//        echo "sdff";
-
-//        return true;
     }
 }

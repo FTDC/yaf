@@ -10,20 +10,34 @@
  */
 class Bootstrap extends Yaf_Bootstrap_Abstract
 {
+    protected $config;
+
 
     public function _initConfig()
     {
+//        $this->config = \Yaf\Application::app()->getConfig();
         //把配置保存起来
-        $arrConfig = Yaf_Application::app()->getConfig();
-        Yaf_Registry::set('config', $arrConfig);
+        $this->config = Yaf_Application::app()->getConfig();
+        Yaf_Registry::set('config', $this->config);
     }
 
 
     public function _initPlugin(Yaf_Dispatcher $dispatcher)
     {
-        //注册一个插件
+        // 注册一个插件
         $objSamplePlugin = new SamplePlugin();
         $dispatcher->registerPlugin($objSamplePlugin);
+    }
+
+
+    public function _initDb()
+    {
+//        var_dump(__FILE__); exit();
+        if (class_exists('\think\Db')) {
+            \think\Db::setConfig($this->config->database->toArray());
+            //Model关键字，手动加载文件
+            Yaf_Loader::import($this->config->application->directory.'/library/think/Model.php');
+        }
     }
 
 

@@ -6,16 +6,25 @@
  * Time: 18:09
  */
 
-class BalanceModel extends Yaf_Controller_Abstract
+use \think\Model;
+
+class BalanceModel extends Model
 {
+
+    protected $table = 'balance_log';
+    protected $name = 'balance';
+
 
     public function queryBalanceList()
     {
-        $params['page'] = 7;
-        $count = 10;
-        $list = array();
+
+        $count = $this->count();
+
+        $listRecord = $this->field("trade_no, title, trade_amount")->page(1, 10)->select()->toArray();
+
+        $params['page'] = 1;
         $result = [
-            'rows' => $list,
+            'rows' => $listRecord,
             'page' => $params['page'],
             'total' => $count,
         ];
