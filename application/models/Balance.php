@@ -6,7 +6,7 @@
  * Time: 18:09
  */
 
-use \think\Model;
+use think\Model;
 
 class BalanceModel extends Model
 {
@@ -20,7 +20,7 @@ class BalanceModel extends Model
 
         $count = $this->count();
 
-        $listRecord = $this->field("trade_no, title, trade_amount")->page(1, 10)->select()->toArray();
+        $listRecord = $this->field("trade_no, title, trade_amount")->limit(1, 10)->select()->toArray();
 
         $params['page'] = 1;
         $result = [

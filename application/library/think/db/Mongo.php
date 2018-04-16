@@ -22,7 +22,6 @@ use MongoDB\Driver\Query as MongoQuery;
 use MongoDB\Driver\ReadPreference;
 use MongoDB\Driver\WriteConcern;
 use think\db\connector\Mongo as MongoConnection;
-use think\db\Query;
 
 class Mongo extends Query
 {
